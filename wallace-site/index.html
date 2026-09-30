@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Wallace, studio de communication en Pays de la Loire : naming, identité de marque, campagnes 360°, sites web, print et digital.">
+<title>Wallace Portfolio 2026</title>
+<link rel="icon" type="image/png" href="assets/a00.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,800;0,900;1,300;1,400;1,800&display=swap" rel="stylesheet">
+<style>
+/* Layout : cinéma plein cadre — un héros vidéo qui se rétracte en cadre, une galerie horizontale épinglée, des sections éditoriales pleine largeur sur fond nuit. */
+:root{
+  --bg:#09090a;
+  --bg2:#111113;
+  --ink:#efeae0;
+  --ink2:rgba(239,234,224,.55);
+  --ink3:rgba(239,234,224,.14);
+  --signal:#ff3b2f;          /* feux arrière de la Volvo */
+  --ac:#ff3b2f;              /* accent courant (varie selon le projet) */
+  /* Tout en Avenir : Avenir Next / Avenir quand le système l'a (Mac, iPhone), Figtree (géométrique très proche) partout ailleurs */
+  --avenir:'Avenir Next','Avenir','Figtree','Helvetica Neue',Arial,sans-serif;
+  --display:var(--avenir);
+  --title:var(--avenir);
+  --mono:var(--avenir);
+  --gut:clamp(16px,3.2vw,48px);
+  --ease:cubic-bezier(.76,0,.24,1);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font-family:var(--title);font-size:16px;line-height:1.6;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body.is-locked{overflow:hidden}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--ac);outline-offset:4px}
+h1,h2,h3{text-wrap:balance;font-weight:800}
+h1,h2{font-feature-settings:'ss01'}
+.mono{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.outline{font-weight:300;font-style:italic;letter-spacing:-.025em}
+h1 em:not(.outline),h2 em:not(.outline){font-style:normal}
+@media (hover:hover) and (pointer:fine){body.has-cursor,body.has-cursor a,body.has-cursor button,body.has-cursor .pc{cursor:none}}
+
+/* ─── Grain ─── */
+.grain{position:fixed;inset:-50%;z-index:900;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-5%)}60%{transform:translate(-6%,2%)}80%{transform:translate(5%,5%)}100%{transform:translate(0,0)}}
+
+/* ─── Curseur ─── */
+#cur{position:fixed;left:0;top:0;z-index:2000;pointer-events:none;width:32px;height:32px;margin:-16px 0 0 -16px;display:none}
+#cur-label{position:fixed;left:0;top:0;z-index:1999;pointer-events:none;display:none;align-items:center;justify-content:center;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;background:var(--ac);color:#0a0a0a;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transform:scale(0)}
+body.has-cursor #cur,body.has-cursor #cur-label{display:flex}
+
+/* ─── Barre de progression ─── */
+#prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:1200;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#ff3366,#ffcc00,#00ffcc,#cc88ff)}
+
+/* ─── Préchargeur « maintenir pour démarrer » ─── */
+#loader{position:fixed;inset:0;z-index:1500;background:var(--bg);display:grid;grid-template-rows:auto 1fr auto;padding:calc(env(safe-area-inset-top,0px) + 24px) var(--gut) calc(env(safe-area-inset-bottom,0px) + 24px);user-select:none;-webkit-user-select:none;touch-action:none}
+.ld-top,.ld-bot{display:flex;justify-content:space-between;gap:24px;color:var(--ink2)}
+.ld-log{font-family:var(--mono);font-size:11px;line-height:1.9;color:var(--ink2);min-height:6em}
+.ld-log b{color:var(--ink);font-weight:400}
+.ld-center{display:grid;place-items:center;align-content:center;gap:28px}
+#ld-w{width:min(72vw,520px);height:auto;clip-path:inset(0 100% 0 0);animation:sign 1.6s .3s var(--ease) forwards}
+@keyframes sign{to{clip-path:inset(0 0 0 0)}}
+.ld-hold{position:relative;width:132px;height:132px;border-radius:50%;display:grid;place-items:center;touch-action:none}
+.ld-hold svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.ld-hold circle{fill:none;stroke-width:2}
+.ld-hold .trk{stroke:var(--ink3)}
+.ld-hold .bar{stroke:var(--ink);stroke-dasharray:402;stroke-dashoffset:402}
+.ld-hold span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;text-align:center;line-height:1.5}
+.ld-hold:hover .trk{stroke:rgba(239,234,224,.3)}
+.ld-pct{font-family:var(--display);font-weight:200;font-style:italic;font-size:clamp(28px,4vw,48px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.ld-skip{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);text-decoration:underline;text-underline-offset:4px}
+.ld-skip:hover{color:var(--ink)}
+
+/* ─── Transition en pixels ─── */
+#px{position:fixed;inset:0;z-index:1600;display:grid;pointer-events:none}
+#px i{display:block;transform:scale(0)}
+
+/* ─── Navigation ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1100;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:calc(env(safe-area-inset-top,0px) + 18px) var(--gut) 18px;mix-blend-mode:difference;color:#fff;transition:transform .5s var(--ease)}
+.nav.is-hidden{transform:translateY(-110%)}
+.nav-logo{display:block;line-height:0}
+.nav-logo img{height:30px;width:auto}
+.nav-mid{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;position:relative}
+.nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-rdv{border:1px solid currentColor;padding:8px 14px;border-radius:40px}
+.nav-rdv::after{display:none}
+.nav-burger{display:none;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+
+#menu{position:fixed;inset:0;z-index:1050;background:var(--ink);color:var(--bg);display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0 var(--gut);clip-path:inset(0 0 100% 0);transition:clip-path .8s var(--ease)}
+#menu.is-open{clip-path:inset(0 0 0 0)}
+#menu a{font-family:var(--display);font-weight:800;font-size:clamp(40px,12vw,96px);letter-spacing:-.04em;line-height:1.02}
+#menu .mono{margin-top:32px;opacity:.6}
+
+/* ─── Héros ─── */
+.hero{position:relative;height:100vh;height:100svh;min-height:560px}
+.hero-media{position:absolute;inset:0;overflow:hidden;will-change:clip-path}
+.hero-media video,.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.5)}
+.hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,10,.95),rgba(9,9,10,.1) 55%,rgba(9,9,10,.35))}
+.hero-in{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--gut) clamp(28px,5vh,56px)}
+.hero-kick{color:var(--ink2);margin-bottom:clamp(18px,3vh,32px);display:flex;gap:18px;flex-wrap:wrap}
+.hero-kick span:first-child{color:var(--ink)}
+.hero-h1{font-family:var(--display);font-size:clamp(46px,12.4vw,210px);letter-spacing:-.05em;line-height:.86;text-transform:uppercase}
+.hero-h1 .ln{display:block;overflow:hidden;padding:.14em 0 .04em;margin-top:-.14em}
+.hero-h1 .ln:nth-child(2){padding-left:clamp(12px,6vw,140px)}
+.hero-h1 .ch{display:inline-block;will-change:transform}
+.hero-foot{margin-top:clamp(20px,4vh,40px);display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.hero-desc{font-size:clamp(15px,1.25vw,18px);color:var(--ink2);max-width:34ch;line-height:1.6}
+.hero-desc strong{color:var(--ink);font-weight:700}
+.hero-scroll{display:flex;align-items:center;gap:14px;color:var(--ink2)}
+.hero-scroll i{display:block;width:56px;height:1px;background:var(--ink3);position:relative;overflow:hidden}
+.hero-scroll i::after{content:'';position:absolute;inset:0;background:var(--ink);animation:scan 2.2s var(--ease) infinite}
+@keyframes scan{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+
+/* ─── Ticker ─── */
+.ticker{overflow:hidden;border-block:1px solid var(--ink3);padding:14px 0;background:var(--bg2)}
+.tk{display:flex;width:max-content;animation:roll 32s linear infinite}
+.tk span{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);padding:0 26px;white-space:nowrap}
+.tk span.d{color:var(--signal);padding:0}
+@keyframes roll{to{transform:translateX(-50%)}}
+
+/* ─── Manifeste ─── */
+.mani{padding:clamp(96px,16vh,180px) var(--gut);display:grid;grid-template-columns:minmax(120px,1fr) 4fr;gap:clamp(24px,4vw,64px)}
+.mani-lab{color:var(--ink2);padding-top:.9em}
+.mani-txt{font-family:var(--display);font-weight:300;font-size:clamp(28px,4.6vw,76px);line-height:1.08;letter-spacing:-.035em;text-wrap:pretty}
+.mani-txt .w{display:inline-block;opacity:.14}
+.mani-txt .hl,.mani-txt b{font-weight:800}
+.mani-txt .hl{color:var(--signal);font-style:italic}
+.mani-sig{grid-column:2;color:var(--ink2);margin-top:12px}
+
+/* ─── Chiffres ─── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--ink3)}
+.st{padding:clamp(28px,4vw,56px) var(--gut);border-right:1px solid var(--ink3);position:relative;overflow:hidden}
+.st:last-child{border-right:0}
+.st-n{font-family:var(--display);font-weight:800;font-size:clamp(48px,6.4vw,104px);letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.st-l{color:var(--ink2);margin-top:12px}
+.st{--p:0}
+.st::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--c);transform:scaleX(var(--p));transform-origin:left}
+
+/* ─── Section titre ─── */
+.sh{padding:clamp(96px,14vh,160px) var(--gut) clamp(40px,6vh,72px);display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(24px,5vw,80px);align-items:end}
+.sh h2{font-family:var(--display);font-size:clamp(38px,6.6vw,108px);letter-spacing:-.045em;line-height:.9}
+.sh h2 em{font-style:normal}
+.sh p{color:var(--ink2);max-width:44ch;font-size:clamp(15px,1.15vw,17px)}
+.sh .mono{display:block;color:var(--ink);margin-bottom:18px}
+[data-split] .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em;margin-bottom:-.06em}
+[data-split] .wi{display:inline-block;will-change:transform}
+
+/* ─── Galerie horizontale ─── */
+.work{position:relative}
+.hwrap{position:relative;overflow:hidden}
+.htrack{display:flex;gap:clamp(20px,2.4vw,40px);padding:0 var(--gut);align-items:flex-start;width:max-content;will-change:transform}
+.hmeta{position:absolute;left:var(--gut);right:var(--gut);bottom:28px;display:flex;justify-content:space-between;align-items:center;gap:24px;pointer-events:none;color:var(--ink2)}
+.hcount{font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.02em;color:var(--ink)}
+.hcount b{color:var(--ac);font-weight:800;transition:color .4s}
+.hbar{flex:1;height:1px;background:var(--ink3);position:relative;max-width:420px}
+.hbar i{position:absolute;inset:0;background:var(--ac);transform-origin:left;transform:scaleX(0);transition:background .4s}
+
+.pc{position:relative;flex:none;display:flex;flex-direction:column;gap:18px;text-align:left}
+.pc-media{position:relative;display:block;height:min(60vh,640px);aspect-ratio:var(--ar);overflow:hidden;background:var(--bg2);border-radius:4px}
+@media (min-width:901px){.hwrap{height:100vh;height:100svh;display:flex;align-items:center}}
+.pc-media img{position:absolute;top:0;left:-9%;width:118%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 1.1s var(--ease),filter .6s}
+.pc:hover .pc-media img,.pc:focus-visible .pc-media img{transform:scale(1.12);filter:brightness(.7)}
+.pc-media::after{content:'';position:absolute;inset:0;border:0 solid var(--pac);transition:border-width .35s var(--ease);pointer-events:none}
+.pc:hover .pc-media::after{border-width:6px}
+.pc-num{position:absolute;top:16px;left:16px;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:#fff;mix-blend-mode:difference}
+.pc-info{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;width:100%}
+.pc-name{font-family:var(--display);font-weight:800;font-size:clamp(22px,2.4vw,40px);letter-spacing:-.035em;line-height:.95;transition:color .3s}
+.pc:hover .pc-name{color:var(--pac)}
+.pc-sub{font-size:14px;color:var(--ink2);margin-top:6px}
+.pc-tags{text-align:right;color:var(--ink2);font-size:10px;line-height:1.8;max-width:22ch}
+.pc-tags span{display:block;color:var(--pac)}
+.pc-end{flex:none;height:min(60vh,640px);width:min(80vw,560px);display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,3vw,40px);background:var(--ink);color:var(--bg);border-radius:4px}
+.pc-end h3{font-family:var(--display);font-size:clamp(30px,3.4vw,56px);letter-spacing:-.04em;line-height:.95}
+.pc-end p{max-width:32ch;opacity:.7}
+.pc-end a{align-self:flex-start;background:var(--bg);color:var(--ink);padding:14px 22px;border-radius:40px}
+
+/* ─── Marquee vitesse ─── */
+.mq{padding:clamp(56px,10vh,110px) 0;overflow:hidden;border-block:1px solid var(--ink3)}
+.mq-row{display:flex;width:max-content;will-change:transform}
+.mq-row+.mq-row{margin-top:.1em}
+.mq-row span{font-family:var(--display);font-weight:800;font-size:clamp(56px,10vw,168px);letter-spacing:-.05em;line-height:1;padding-right:.35em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(239,234,224,.28);transition:color .3s,-webkit-text-stroke-color .3s}
+.mq-row span:hover{color:var(--signal);-webkit-text-stroke-color:transparent}
+.mq-row span.s{-webkit-text-stroke:0;color:var(--signal);font-size:clamp(28px,4vw,64px);align-self:center}
+
+/* ─── Arsenal ─── */
+.ars{padding-bottom:clamp(80px,12vh,140px)}
+.ars-list{list-style:none;border-top:1px solid var(--ink3)}
+.ar{position:relative;display:grid;grid-template-columns:72px 1.2fr 1fr;gap:clamp(16px,3vw,48px);align-items:center;padding:clamp(22px,3.4vw,40px) var(--gut);border-bottom:1px solid var(--ink3);overflow:hidden;isolation:isolate;transition:color .5s var(--ease)}
+.ar::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--ink);transform:scaleY(0);transform-origin:bottom;transition:transform .55s var(--ease)}
+.ar:hover{color:var(--bg)}
+.ar-name{transition:font-weight .4s,letter-spacing .5s var(--ease)}
+.ar:hover .ar-name{font-weight:800;letter-spacing:-.045em}
+.ar:hover::before{transform:scaleY(1)}
+.ar-ico{font-size:26px;line-height:1}
+.ar-name{font-family:var(--display);font-weight:300;font-size:clamp(22px,3.2vw,52px);letter-spacing:-.035em;line-height:1}
+.ar-desc{color:var(--ink2);font-size:15px;max-width:46ch;transition:color .5s var(--ease)}
+.ar:hover .ar-desc{color:rgba(9,9,10,.7)}
+
+/* ─── Clients ─── */
+.cli{padding:0 var(--gut) clamp(96px,14vh,160px)}
+.cli-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,3vw,48px) clamp(20px,3vw,40px);border-top:1px solid var(--ink3);padding-top:clamp(28px,4vw,48px)}
+.cli-g h3{font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin-bottom:18px;display:flex;justify-content:space-between}
+.cli-g ul{list-style:none;display:flex;flex-direction:column;gap:4px}
+.cli-g li{font-family:var(--title);font-weight:300;font-size:clamp(18px,1.6vw,24px);letter-spacing:-.01em;line-height:1.25;color:rgba(239,234,224,.5);transition:color .25s,transform .35s var(--ease);width:fit-content}
+.cli-g li:hover{color:var(--ink);font-weight:800;transform:translateX(8px)}
+.cli-g+.cli-g{min-width:0}
+
+/* ─── CTA ─── */
+.cta{position:relative;padding:clamp(100px,16vh,200px) var(--gut);display:grid;grid-template-columns:1fr auto;gap:clamp(32px,5vw,80px);align-items:center;border-top:1px solid var(--ink3);overflow:hidden}
+.cta h2{font-family:var(--display);font-size:clamp(44px,8.4vw,144px);letter-spacing:-.05em;line-height:.88}
+.cta-side{display:flex;flex-direction:column;gap:28px;align-items:flex-start}
+.cta-side p{color:var(--ink2);max-width:30ch}
+.mag{position:relative;width:clamp(150px,14vw,210px);aspect-ratio:1;border-radius:50%;background:var(--signal);color:#0a0a0a;display:grid;place-items:center;text-align:center;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;line-height:1.4;will-change:transform}
+.mag span{display:block;pointer-events:none}
+.cta-contact{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink2);display:flex;flex-direction:column;gap:6px;user-select:text}
+.cta-contact a{color:var(--ink);border-bottom:1px solid var(--ink3);width:fit-content;transition:border-color .3s}
+.cta-contact a:hover{border-color:var(--ink)}
+
+/* ─── Pied ─── */
+footer{padding:clamp(40px,6vh,64px) var(--gut) calc(env(safe-area-inset-bottom,0px) + 28px);border-top:1px solid var(--ink3);overflow:hidden}
+.ft-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;color:var(--ink2)}
+.ft-top nav{display:flex;gap:24px}
+.ft-top nav a:hover{color:var(--ink)}
+.ft-big{margin-top:clamp(32px,6vh,72px)}
+.ft-big img{width:100%;height:auto;clip-path:inset(0 0 0 0)}
+.ft-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:24px;color:var(--ink2)}
+.ft-bot em{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:none}
+
+/* ─── Fiche projet ─── */
+#case{position:fixed;inset:0;z-index:1400;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;visibility:hidden}
+#case.is-open{visibility:visible}
+.cs-bar{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:calc(env(safe-area-inset-top,0px) + 16px) var(--gut) 16px;background:rgba(9,9,10,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--ink3)}
+.cs-bar .mono{color:var(--ink2)}
+.cs-close{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.cs-close i{width:40px;height:40px;border-radius:50%;border:1px solid var(--ink3);display:grid;place-items:center;font-style:normal;font-size:18px;transition:background .3s,color .3s,transform .5s var(--ease)}
+.cs-close:hover i{background:var(--ink);color:var(--bg);transform:rotate(90deg)}
+.cs-head{padding:clamp(56px,10vh,120px) var(--gut) clamp(40px,6vh,72px);display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,5vw,80px);align-items:end}
+.cs-kick{color:var(--cac);margin-bottom:18px;display:block}
+.cs-title{font-family:var(--display);font-size:clamp(40px,7.6vw,128px);letter-spacing:-.05em;line-height:.9}
+.cs-sub{color:var(--ink2);margin-top:18px;font-size:17px}
+.cs-live{display:inline-flex;margin-top:24px;padding:12px 20px;border-radius:40px;background:var(--cac);color:#0a0a0a}
+.cs-live:hover{filter:brightness(1.1)}
+.cs-live[hidden],[hidden]{display:none!important}
+.cs-del h3{font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin-bottom:14px}
+.cs-del ul{list-style:none;border-top:1px solid var(--ink3)}
+.cs-del li{padding:10px 0;border-bottom:1px solid var(--ink3);font-size:15px;display:flex;gap:14px}
+.cs-del li::before{content:'✦';color:var(--cac);font-size:11px;line-height:2}
+.cs-gal{padding:0 var(--gut) clamp(64px,10vh,120px);display:flex;flex-direction:column;gap:clamp(32px,6vh,72px);max-width:1400px;margin:0 auto}
+.cs-fig{display:flex;flex-direction:column;gap:12px}
+.cs-fig .im{overflow:hidden;border-radius:4px;background:var(--bg2)}
+.cs-fig .im img{width:100%;height:auto}
+.cs-fig .pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.5vw,20px)}
+.cs-fig figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink2)}
+.cs-note{border:1px solid var(--ink3);border-radius:4px;padding:24px;color:var(--ink2);font-size:14px;font-style:italic;max-width:70ch}
+.cs-next{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:clamp(40px,8vh,96px) var(--gut);border-top:1px solid var(--ink3);width:100%;text-align:left}
+.cs-next .mono{color:var(--ink2)}
+.cs-next strong{display:block;font-family:var(--display);font-weight:800;font-size:clamp(34px,6vw,96px);letter-spacing:-.05em;line-height:.9;margin-top:10px;transition:color .3s}
+.cs-next:hover strong{color:var(--nac)}
+.cs-next i{font-style:normal;font-size:clamp(32px,5vw,72px);line-height:1;transition:transform .5s var(--ease)}
+.cs-next:hover i{transform:translateX(12px) rotate(-45deg)}
+
+/* ─── Responsive ─── */
+@media (max-width:900px){
+  .nav-links,.nav-mid{display:none}
+  .nav-burger{display:block}
+  .mani{grid-template-columns:1fr}
+  .mani-sig{grid-column:1}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .st:nth-child(2){border-right:0}
+  .st:nth-child(-n+2){border-bottom:1px solid var(--ink3)}
+  .sh,.cs-head,.cta{grid-template-columns:1fr}
+  .htrack{flex-direction:column;width:100%;gap:48px}
+  .pc,.pc-end{width:100%}
+  .pc-media{height:auto;width:100%;max-width:100%}
+  .pc-end{height:auto;min-height:320px;gap:32px}
+  .hmeta{display:none}
+  .ar{grid-template-columns:40px 1fr}
+  .ar-desc{grid-column:2}
+  .cli-wall{grid-template-columns:1fr 1fr}
+}
+@media (max-width:520px){
+  .cli-wall{grid-template-columns:1fr}
+  .cs-fig .pair{grid-template-columns:1fr}
+  .hero-scroll{display:none}
+  .pc-tags{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .grain,.tk,.hero-scroll i::after{animation:none}
+  #ld-w{animation:none;clip-path:none}
+  *{transition-duration:.01ms!important}
+}
+</style>
+
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<canvas id="cur" width="32" height="32" aria-hidden="true"></canvas>
+<div id="cur-label" aria-hidden="true">Voir</div>
+<div id="prog" aria-hidden="true"></div>
+<div id="px" aria-hidden="true"></div>
+
+<!-- PRÉCHARGEUR -->
+<div id="loader" role="dialog" aria-label="Entrée du site">
+  <div class="ld-top mono"><span>Wallace™ — Terres de communication</span><span>Pays de la Loire, FR</span></div>
+  <div class="ld-center">
+    <img id="ld-w" src="assets/logo.png" alt="Wallace" width="1400" height="389">
+    <div class="ld-pct" id="ld-pct">000</div>
+    <button class="ld-hold" id="ld-hold" type="button" aria-label="Maintenir pour démarrer">
+      <svg viewBox="0 0 132 132" aria-hidden="true"><circle class="trk" cx="66" cy="66" r="64"/><circle class="bar" id="ld-bar" cx="66" cy="66" r="64"/></svg>
+      <span>Maintenir<br>pour démarrer</span>
+    </button>
+    <button class="ld-skip" id="ld-skip" type="button">Entrer directement</button>
+  </div>
+  <div class="ld-bot">
+    <div class="ld-log" id="ld-log" aria-live="polite"></div>
+    <div class="mono" style="align-self:flex-end">Portfolio 2026</div>
+  </div>
+</div>
+
+<!-- MENU MOBILE -->
+<div id="menu" aria-hidden="true">
+  <a href="#work" data-close>Réalisations</a>
+  <a href="#arsenal" data-close>Arsenal</a>
+  <a href="#clients" data-close>Clients</a>
+  <a href="#contact" data-close>Contact</a>
+  <span class="mono">07 63 44 19 19 · raphael@wearewallace.online</span>
+</div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="nav-logo" aria-label="Wallace, retour en haut"><img src="assets/logo-sm.png" alt="Wallace" width="360" height="100"></a>
+  <span class="nav-mid" id="clock">Pays de la Loire — --:--</span>
+  <nav class="nav-links" aria-label="Navigation principale">
+    <a href="#work">Réalisations</a>
+    <a href="#arsenal">Arsenal</a>
+    <a href="#clients">Clients</a>
+    <a href="https://cal.com/raphael-wearewallace.online/kilt-ou-double" class="nav-rdv" target="_blank" rel="noopener">Prendre RDV ↗</a>
+  </nav>
+  <button class="nav-burger" id="burger" type="button" aria-expanded="false">Menu</button>
+</header>
+
+<main id="top">
+  <!-- HÉROS -->
+  <section class="hero" id="hero">
+    <div class="hero-media" id="hero-media">
+      <img src="assets/a01.png" alt="" aria-hidden="true">
+      <video autoplay muted loop playsinline poster="assets/a01.png" id="hero-video"><source src="assets/a02.mp4" type="video/mp4"></video>
+    </div>
+    <div class="hero-in">
+      <p class="hero-kick mono"><span>Wallace — Studio de communication</span><span>Portfolio 2026</span></p>
+      <h1 class="hero-h1" id="hero-h1" aria-label="Nos batailles gagnées.">
+        <span class="ln" data-chars>Nos</span>
+        <span class="ln outline" data-chars>Batailles</span>
+        <span class="ln" data-chars>Gagnées.</span>
+      </h1>
+      <div class="hf-wrap"><div class="hero-foot">
+        <p class="hero-desc"><strong>20 ans de terrain. 250+ campagnes.</strong><br>Naming, identité, campagnes 360°, sites web. Le beau au service de l'efficace.</p>
+        <div class="hero-scroll mono"><i></i>Défiler</div>
+      </div></div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="tk">
+      <span>Naming</span><span class="d">✦</span><span>Identité</span><span class="d">✦</span><span>Stratégie</span><span class="d">✦</span><span>Campagnes 360°</span><span class="d">✦</span><span>Plan média</span><span class="d">✦</span><span>Copywriting</span><span class="d">✦</span><span>Studio print</span><span class="d">✦</span><span>Sites web</span><span class="d">✦</span><span>Digital</span><span class="d">✦</span><span>Direction artistique IA</span><span class="d">✦</span>
+      <span>Naming</span><span class="d">✦</span><span>Identité</span><span class="d">✦</span><span>Stratégie</span><span class="d">✦</span><span>Campagnes 360°</span><span class="d">✦</span><span>Plan média</span><span class="d">✦</span><span>Copywriting</span><span class="d">✦</span><span>Studio print</span><span class="d">✦</span><span>Sites web</span><span class="d">✦</span><span>Digital</span><span class="d">✦</span><span>Direction artistique IA</span><span class="d">✦</span>
+    </div>
+  </div>
+
+  <!-- MANIFESTE -->
+  <section class="mani" aria-label="Manifeste">
+    <p class="mani-lab mono">(Manifeste)</p>
+    <p class="mani-txt" id="mani">Nous conjuguons <span class="hl">le beau</span> et <b>l'efficace.</b> Des marques bâties pour <b>vendre</b>, pas pour décorer des écrans. Pas du genre à tourner autour du pot.</p>
+    <p class="mani-sig mono">Lord Wallace — Manifeste fondateur · 1662</p>
+  </section>
+
+  <!-- CHIFFRES -->
+  <section class="stats" id="stats" aria-label="Chiffres clés">
+    <div class="st" style="--c:#ff3366"><div class="st-n" data-t="20" data-s="+">20+</div><div class="st-l mono">Ans d'expérience</div></div>
+    <div class="st" style="--c:#ffcc00"><div class="st-n" data-t="50" data-s="+">50+</div><div class="st-l mono">Clients & partenaires</div></div>
+    <div class="st" style="--c:#00ffcc"><div class="st-n" data-t="250" data-s="+">250+</div><div class="st-l mono">Campagnes délivrées</div></div>
+    <div class="st" style="--c:#cc88ff"><div class="st-n" data-t="112" data-s="">112</div><div class="st-l mono">Lancements immobiliers</div></div>
+  </section>
+
+  <!-- RÉALISATIONS -->
+  <section class="work" id="work">
+    <div class="sh">
+      <h2 data-split>Le beau au service de <em class="outline">l'efficace</em></h2>
+      <div>
+        <span class="mono">(13 réalisations)</span>
+        <p>Chaque réalisation est une opération de terrain : promoteurs, clubs, industriels, startups, et maintenant des sites web. Cliquez sur un projet pour ouvrir la fiche complète.</p>
+      </div>
+    </div>
+    <div class="hwrap" id="hwrap">
+      <div class="htrack" id="htrack"></div>
+      <div class="hmeta mono" aria-hidden="true"><span class="hcount"><b id="hc-i">01</b> / <span id="hc-n">12</span></span><span class="hbar"><i id="hbar"></i></span><span>Défiler →</span></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="mq" aria-hidden="true">
+    <div class="mq-row" id="mq1"><span>Branding</span><span class="s">✦</span><span>Naming</span><span class="s">✦</span><span>Stratégie</span><span class="s">✦</span><span>Campagnes</span><span class="s">✦</span><span>Branding</span><span class="s">✦</span><span>Naming</span><span class="s">✦</span><span>Stratégie</span><span class="s">✦</span><span>Campagnes</span><span class="s">✦</span></div>
+    <div class="mq-row" id="mq2"><span>Print</span><span class="s">✦</span><span>Sites web</span><span class="s">✦</span><span>Événementiel</span><span class="s">✦</span><span>Fresques</span><span class="s">✦</span><span>Print</span><span class="s">✦</span><span>Sites web</span><span class="s">✦</span><span>Événementiel</span><span class="s">✦</span><span>Fresques</span><span class="s">✦</span></div>
+  </div>
+
+  <!-- ARSENAL -->
+  <section class="ars" id="arsenal">
+    <div class="sh">
+      <h2 data-split>Notre <em class="outline">arsenal</em></h2>
+      <div><span class="mono">(7 expertises)</span><p>Du nom au support imprimé, Wallace tient la marque de bout en bout. Une seule équipe, une seule ligne.</p></div>
+    </div>
+    <ul class="ars-list">
+      <li class="ar"><span class="ar-ico" aria-hidden="true">⚔</span><span class="ar-name">Naming & rédaction</span><p class="ar-desc">Trouver le nom qui reste. Écrire les mots qui convainquent. Le langage est la première arme d'une marque.</p></li>
+      <li class="ar"><span class="ar-ico" aria-hidden="true">◈</span><span class="ar-name">Identité de marque</span><p class="ar-desc">Logo, charte, univers graphique. Une cohérence visuelle qui distingue, inspire confiance et fait vendre.</p></li>
+      <li class="ar"><span class="ar-ico" aria-hidden="true">▭</span><span class="ar-name">Sites web</span><p class="ar-desc">Sites vitrines et plateformes sur mesure : design, développement, mise en ligne. Rapides, animés, pensés mobile d'abord, et simples à faire vivre. Dernier en date : mhc44.com.</p></li>
+      <li class="ar"><span class="ar-ico" aria-hidden="true">◎</span><span class="ar-name">Stratégie marketing</span><p class="ar-desc">Diagnostiquer le terrain, cibler, concevoir les campagnes qui font mouche. Pas de blabla, des résultats.</p></li>
+      <li class="ar"><span class="ar-ico" aria-hidden="true">▣</span><span class="ar-name">Studio & impression</span><p class="ar-desc">Du fichier au support fini : plaquettes, affiches, signalétique. Ce que Wallace crée, Wallace le tient jusqu'au bout.</p></li>
+      <li class="ar"><span class="ar-ico" aria-hidden="true">◇</span><span class="ar-name">Plan média & conseil</span><p class="ar-desc">Quels canaux, quels messages, quel timing. La communication efficace est d'abord une question de précision.</p></li>
+      <li class="ar"><span class="ar-ico" aria-hidden="true">⌬</span><span class="ar-name">Digital & réseaux</span><p class="ar-desc">Contenus sociaux, campagnes digitales, landing pages, direction artistique IA. La présence en ligne mérite la même exigence.</p></li>
+    </ul>
+  </section>
+
+  <!-- CLIENTS -->
+  <section class="cli-sec" id="clients">
+    <div class="sh">
+      <h2 data-split>Sélectionné par les <em class="outline">meilleurs</em></h2>
+      <div><span class="mono">(50+ clients)</span><p>Promoteurs, industriels, clubs sportifs, collectivités, startups. Wallace s'adapte à tous les terrains.</p></div>
+    </div>
+    <div class="cli">
+      <div class="cli-wall">
+        <div class="cli-g"><h3><span>Immobilier & promotion</span><span>17</span></h3><ul><li>Opus Groupe</li><li>Depreux Construction</li><li>Giboire</li><li>Primalys</li><li>Terravia</li><li>BatiNantes</li><li>Sogimmo</li><li>Sianna Promotion</li><li>Immodvisor</li><li>Espaces Atypiques</li><li>Avenue70</li><li>Mackenzie Home</li><li>Alcyon</li><li>Offys</li><li>Mona Nova</li><li>Idwan</li><li>IFI</li></ul></div>
+        <div class="cli-g"><h3><span>Industrie & santé</span><span>04</span></h3><ul><li>Philips</li><li>Neoflo</li><li>Thalasso Rivage</li><li>Amsterdam Air</li></ul>
+          <h3 style="margin-top:36px"><span>Tourisme & territoire</span><span>03</span></h3><ul><li>Le Mont Saint-Michel</li><li>D-Day Normandie</li><li>Ville de Clisson</li></ul></div>
+        <div class="cli-g"><h3><span>Sport & clubs</span><span>05</span></h3><ul><li>SNVBA — Volley pro</li><li>Legé HBC — Handball</li><li>Citadelle MMA</li><li>MHC</li><li>Roller Carquefou</li></ul></div>
+        <div class="cli-g"><h3><span>Tech & services</span><span>04</span></h3><ul><li>MRIT</li><li>Nootrolab</li><li>Dexxter</li><li>SoonGo</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <h2 data-split>La prochaine bataille, <em class="outline">c'est la vôtre.</em></h2>
+    <div class="cta-side">
+      <a class="mag" id="mag" href="https://cal.com/raphael-wearewallace.online/kilt-ou-double" target="_blank" rel="noopener" data-cursor=""><span>Kilt<br>ou double ?<br>↗</span></a>
+      <p>Ce portfolio n'est qu'un aperçu. Chaque projet Wallace commence par une conversation directe.</p>
+      <div class="cta-contact"><a href="tel:+33763441919">07 63 44 19 19</a><a href="mailto:raphael@wearewallace.online">raphael@wearewallace.online</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="ft-top mono"><span>Wallace™ SARL — Pays de la Loire</span><nav aria-label="Réseaux"><a href="https://www.instagram.com/weare.wallace/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://www.behance.net/wearewallace/projects" target="_blank" rel="noopener">Behance ↗</a><a href="#top">Haut de page ↑</a></nav></div>
+  <div class="ft-big" id="ft-big"><img src="assets/logo.png" alt="Wallace" width="1400" height="389" loading="lazy"></div>
+  <div class="ft-bot mono"><em>Bousculer n'est plus impoli. C'est une stratégie.</em><span>© 2026 Wallace</span></div>
+</footer>
+
+<!-- FICHE PROJET -->
+<div id="case" role="dialog" aria-modal="true" aria-labelledby="cs-title" data-lenis-prevent>
+  <div class="cs-bar"><span class="mono" id="cs-crumb"></span><button class="cs-close" id="cs-close" type="button">Fermer <i aria-hidden="true">×</i></button></div>
+  <div class="cs-head">
+    <div><span class="cs-kick mono" id="cs-kick"></span><h2 class="cs-title" id="cs-title"></h2><p class="cs-sub" id="cs-sub"></p><a class="cs-live mono" id="cs-live" href="#" target="_blank" rel="noopener" hidden>Voir le site en ligne ↗</a></div>
+    <div class="cs-del"><h3>Ce que Wallace a livré</h3><ul id="cs-del"></ul></div>
+  </div>
+  <div class="cs-gal" id="cs-gal"></div>
+  <button class="cs-next" id="cs-next" type="button"><span><span class="mono">Projet suivant</span><strong id="cs-next-name"></strong></span><i aria-hidden="true">→</i></button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+'use strict';
+const A='assets/';
+const CAL='https://cal.com/raphael-wearewallace.online/kilt-ou-double';
+const COLS=['#ff3366','#ffcc00','#00ffcc','#ff6600','#cc00ff','#00ff88','#ff0088','#44aaff'];
+const PX=[[1,0,0,0,1],[1,0,0,0,1],[1,0,1,0,1],[1,1,0,1,1],[1,0,0,0,1]];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+
+/* ─── Données projets ─── */
+const P=[
+ {id:'mhc',name:'MHC',title:'Metropolitan Hockey Center',sub:'Hockey sur gazon · Site web',tag:'Site web · Design · Développement',cat:'Sport · Club formateur',ac:'#e8483b',ar:'16/9',year:'2026 · Site web livré',cover:'mhc-cover',url:'https://mhc44.com/',
+  gal:[['mhc-web-hero','Page d\'accueil — Vidéo plein écran et signature du club « Né pour jouer. Ici pour grandir. »'],['mhc-mobile','Version mobile — Pensée pour les parents et les joueurs, d\'abord sur téléphone'],['mhc-web-club','Le club — Les trois piliers du projet sportif'],['mhc-web-eff','L\'effectif — Numéros, postes et portraits de l\'équipe première'],['mhc-web-cal','Saison — Résultats et calendrier du Championnat U15 Gazon'],['mhc-3','Visuels du site — L\'équipe sur le terrain'],['mhc-1','Visuels du site — Le maillot du club, numéro 15']],
+  del:['Conception & design du site','Développement sur mesure, responsive mobile','Accueil vidéo & animations au défilement','Effectif, staff & résultats / calendrier','Le Bench : vitrine des partenaires','Boutique officielle & formulaire d\'adhésion']},
+ {id:'depreux',name:'Depreux',title:'Depreux Construction',sub:'Construction · Grand Ouest',tag:'Campagne 360°',cat:'Identité · Print · Digital',ac:'#7fcd9a',ar:'3/2',year:'2024',cover:'a03',
+  gal:[['a03','Campagne affichage — Mockup environnement'],['a18','Brochure commerciale — Couverture'],['a19','Brochure commerciale — Intérieur déplié']],
+  del:['Refonte logo & charte graphique','Campagne affichage 4×3 et city light','Brochure commerciale 12 pages','Déclinaisons digitales']},
+ {id:'neoflo',name:'Neoflo',title:'Neoflo',sub:'Innovation mondiale',tag:'Naming · Stratégie · Lancement',cat:'Santé · Innovation',ac:'#4dd9e8',ar:'1/1',year:'2023',cover:'a04',
+  gal:[['a04','Packaging produit — La ceinture de respiration'],['a20','Visuel usage — Communication digitale desktop'],['a21','Visuel lifestyle — Apaisement du système nerveux']],
+  del:['Naming de la marque Neoflo','Stratégie de positionnement & brand story','Identité visuelle complète','Packaging produit','Visuels digitaux & campagne de lancement']},
+ {id:'citadelle',name:'Citadelle',title:'Citadelle MMA',sub:'Arts martiaux mixtes',tag:'Logo · Identité · Univers',cat:'Sport · Arts martiaux',ac:'#ff4444',ar:'4/5',year:'2024',cover:'a05',
+  gal:[['a05','Post Instagram — Révèle ton potentiel'],['a22','Patch brodé — Déclinaison textile bordeaux'],['a23','Logo sur drapeau — Déclinaison noir brillant']],
+  del:['Logo & identité visuelle complète','Univers graphique de marque','Déclinaisons textile & signalétique','Contenus réseaux sociaux']},
+ {id:'bluem',name:'Blüm',title:'Blüm × Opus Groupe',sub:'Programme immobilier · Angers',tag:'Naming · Branding · Campagne',cat:'Immobilier · Végétal',ac:'#6bcf8a',ar:'2/3',year:'2024',cover:'a06',
+  gal:[['a06','Mascotte de marque — L\'oiseau Blüm, peinture expressionniste'],['a24','Identité — Plaquette commerciale format vinyle, Angers'],['a25','Brochure commerciale — Vue d\'ensemble des pages'],['a26','Version digitale — Consultation sur tablette'],['a27','Brochure ouverte — L\'architecture qui respire'],['a28','Affichage métro — Campagne commercialisation Angers']],
+  del:['Naming du programme : Blüm','Identité visuelle & univers graphique complet','Mascotte & illustrations expressionnistes','Brochure commerciale premium','Version digitale interactive','Campagne affichage métro & outdoor']},
+ {id:'elisa',name:'Élisa',title:'Élisa Avrillé — Opus Groupe',sub:'Avrillé · 1 an de projet',tag:'Communication 360° · 1 an',cat:'Immobilier premium',ac:'#d4b896',ar:'16/9',year:'2024 · 1 an de projet',cover:'a07',
+  gal:[['a07','Soirée de lancement — Événement de commercialisation'],['a29','Vue aérienne nocturne — Programme Élisa, Avrillé'],['a30','Illustration de programme — Environnement & vie du quartier'],['a31','Déclinaison événementielle — Logo projeté sur asphalte'],['a32','Goodies — Tote bag événement de lancement'],['a33','Brochure premium — Couverture lin gaufré'],['a34','Pin\'s émaillé — Déclinaison bijou de marque']],
+  del:['Naming du programme : Élisa','Identité visuelle complète & charte','Brochure commerciale premium (lin gaufré)','Déclinaisons événementielles (soirée de lancement)','Goodies : pin\'s émail, tote bag, signalétique','Communication 360° sur 1 an']},
+ {id:'idwan',name:'Idwan',title:'Idwan — Le meublé libéré',sub:'Le meublé libéré',tag:'Naming · Logo · Stratégie',cat:'Services · Tech',ac:'#e8e8e8',ar:'16/9',year:'2023',cover:'a08',
+  gal:[['a08','Identité — Logo sur campagne de lancement'],['a35','Univers de marque — Déclinaison textile & engagement'],['a36','Charte graphique — Logotype & déclinaisons N&B'],['a37','Brochure commerciale — « Le meublé libéré » × Opus']],
+  del:['Naming : idwan','Logotype & identité visuelle complète','Charte graphique noir & blanc','Ton éditorial & stratégie de marque','Brochure commerciale « le meublé libéré »','Déclinaisons textile & supports']},
+ {id:'lhbc',name:'Legé HBC',title:'Legé HBC — Handball Club',sub:'Handball club',tag:'Communication globale',cat:'Sport · Territoire',ac:'#ff4444',ar:'1/1',year:'2024 · Communication globale',cover:'a09',
+  gal:[['a09','Logo — Le raton laveur, mascotte officielle du club'],[['a38','a39'],'Campagne maillot « Dispo à la commande » : la dentiste & la pompière'],['a40','Campagne maillot — La prof & le poissonnier du marché'],['a41','Campagne maillot — La caissière du Super U'],[['a42','a43'],'Programmes du week-end — Campagnes réseaux sociaux saison 2024-25']],
+  del:['Refonte logo & mascotte (raton laveur)','Charte graphique club complète','Design équipements (maillots, survêtements)','Campagne « Maillot dispo à la commande »','Templates réseaux sociaux (programme du week-end)','Communication de saison']},
+ {id:'dpo',name:'DPO',title:'DPO × Opus Groupe',sub:'Fresque monumentale',tag:'Art · Scénographie',cat:'Fresque in situ',ac:'#f5c518',ar:'16/9',year:'2024 · Scénographie complète',cover:'a10',
+  gal:[['a10','Fresque monumentale — Vue d\'ensemble dans la résidence'],['a44','Illustration originale — Le léopard, figures et typographies'],['a45','Scénographie complète — Hall d\'entrée, ambiance & fresque in situ']],
+  del:['Concept & direction artistique','Illustration originale grand format','Fresque murale in situ','Scénographie complète des parties communes','Ambiance & décoration de l\'immeuble']},
+ {id:'terravia',name:'Terravia',title:'Terravia — Construire de belles histoires',sub:'Lotisseur national',tag:'Logo · Charte complète',cat:'Immobilier · Grand Ouest',ac:'#e06820',ar:'16/9',year:'2025 · Lotisseur national',cover:'a11',
+  gal:[['a11','Identité globale — Nouveau logo & univers graphique complet'],['a51','Communication programme — Banner digital avec visuel résidence'],['a52','Supports terrain — Roll-up événementiel & panneau de vente 11 terrains'],['a53','Papeterie — Cartes de visite & papier à en-tête'],['a54','Goodies — Gourde inox avec motif de la charte']],
+  del:['Nouveau logo & identité visuelle complète','Charte graphique : vert kaki, orange, motif signature','Panneaux de vente & signalétique terrain','Roll-ups & supports événementiels','Papeterie complète (cartes, en-têtes, enveloppes)','Goodies & objets de marque','Templates digitaux']},
+ {id:'philips',name:'Philips',title:'Philips — Solutions Sommeil',sub:'Multinationale',tag:'Print · Toutes langues',cat:'Industrie · Santé',ac:'#4488ff',ar:'4/3',year:'Multinationale · Toutes langues',cover:'a12',
+  gal:[['a12','Brochure DreamSolution — Support médical multipage, édition internationale'],['a46','Brochure DreamStation 2 — Solutions Sommeil nouvelle génération'],['a47','DreamStation 2 — Mise en page intérieure, design dark premium']],
+  del:['Brochures médicales multipages','Déclinaisons toutes langues (FR, EN, DE, ES…)','Catalogues produits & outils de vente','Respect des chartes graphiques Philips','Production aux standards internationaux']},
+ {id:'snvba',name:'SNVBA',title:'SNVBA — Saint-Nazaire Volley',sub:'Champion de France · Volley',tag:'Logo · Maillots · Campagnes',cat:'Volley pro · Ligue AM',ac:'#f5c518',ar:'3/2',year:'Champion de France · Ligue AM',cover:'a13',
+  gal:[['a13','Affiche city-light — Demi-finale St-Nazaire vs Rennes'],['a48','Maillots domicile — Design Wallace porté en championnat'],['a49','Réseaux sociaux — Template victoire « 3-0, Les Bleus sont Européens »'],['a50','Affichage abri-bus — Gameday St-Nazaire vs Poitiers, Ligue AM']],
+  del:['Logo & identité visuelle du club','Slogan : « Ensemble, créons la vague »','Charte graphique saison complète','Design des maillots domicile & extérieur','Campagnes affiches & affichage urbain','Templates réseaux sociaux (résultats, gameday, actus)','Communication digitale de saison']},
+ {id:'daia',name:'R&DA IA',title:'Recherche & DA IA',sub:'Direction artistique IA',tag:'Recherche · Prompt · DA',cat:'Intelligence artificielle',ac:'#cc00ff',ar:'4/5',year:'Veille & direction artistique IA',cover:'a14',
+  gal:[['a14','DA IA — Lacoste, direction artistique & prompt engineering'],['a15','DA IA — WAF, « l\'application qui traduit le langage chien »'],['a16','DA IA — Nike × Jordan, « Just Drive It », collaboration créative'],['a17','DA IA — Volvo Porcelain Edition, concept car porcelaine de Cholet']],
+  del:['Veille active sur les outils génératifs','Prompt engineering & direction artistique','Création de visuels concept pour marques premium','Intégration IA dans les workflows créatifs','Midjourney, DALL·E, Stable Diffusion, Runway'],
+  note:'Ces visuels sont des exercices de style et de recherche, pas des mandats réels avec ces marques. Wallace explore les possibilités créatives de l\'IA pour mieux les intégrer dans ses productions clients.'}
+];
+const img=k=>A+k+'.jpg';
+const pad=n=>String(n).padStart(2,'0');
+
+/* ─── Construction des cartes ─── */
+const track=$('#htrack');
+track.innerHTML=P.map((p,i)=>`
+ <button class="pc" type="button" data-i="${i}" data-cursor="Voir" style="--ar:${p.ar};--pac:${p.ac}" aria-label="Ouvrir le projet ${p.title}">
+  <span class="pc-media"><span class="pc-num">${pad(i+1)}</span><img src="${img(p.cover)}" alt="${p.title}" loading="${i<3?'eager':'lazy'}"></span>
+  <span class="pc-info"><span><span class="pc-name" style="display:block">${p.name}</span><span class="pc-sub" style="display:block">${p.sub}</span></span>
+  <span class="pc-tags mono"><span>${p.tag}</span>${p.cat}</span></span>
+ </button>`).join('')+`
+ <div class="pc-end"><span class="mono">(Et après ?)</span><h3>Et 240 autres batailles.</h3><p>Le reste se raconte autour d'un café, ou d'un whisky selon l'heure.</p><a class="mono" href="${CAL}" target="_blank" rel="noopener">Prendre RDV ↗</a></div>`;
+$('#hc-n').textContent=pad(P.length);
+
+/* ─── Horloge locale ─── */
+const clock=$('#clock');
+function tick(){try{clock.textContent='Pays de la Loire — '+new Intl.DateTimeFormat('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'}).format(new Date());}catch(e){}}
+tick();setInterval(tick,20000);
+
+/* ─── Pixel W ─── */
+function drawW(ctx,size,color){const s=size/6.4,o=(size-s*5)/2;ctx.clearRect(0,0,size,size);ctx.fillStyle=color;for(let r=0;r<5;r++)for(let k=0;k<5;k++)if(PX[r][k])ctx.fillRect(o+k*s,o+r*s,s-1,s-1);}
+const cur=$('#cur'),cctx=cur.getContext('2d');
+let ci=0;
+setInterval(()=>{drawW(cctx,32,COLS[ci++%COLS.length]);},110);
+drawW(cctx,32,COLS[0]);
+
+/* ─── Aides communes ─── */
+let lenis=null;
+function lockScroll(on){document.body.classList.toggle('is-locked',on);if(lenis)on?lenis.stop():lenis.start();}
+const menu=$('#menu'),burger=$('#burger');
+function closeMenu(){if(!menu.classList.contains('is-open'))return;menu.classList.remove('is-open');menu.setAttribute('aria-hidden','true');burger.textContent='Menu';burger.setAttribute('aria-expanded','false');lockScroll(false);}
+burger.addEventListener('click',()=>{if(menu.classList.contains('is-open')){closeMenu();return;}menu.classList.add('is-open');menu.setAttribute('aria-hidden','false');burger.textContent='Fermer';burger.setAttribute('aria-expanded','true');lockScroll(true);if(window.gsap&&!reduce)gsap.from('#menu a',{yPercent:100,autoAlpha:0,duration:.9,ease:'expo.out',stagger:.06,delay:.25});});
+$$('#menu a').forEach(a=>a.addEventListener('click',closeMenu));
+
+/* ─── Sans GSAP : on affiche tout, sans animations ─── */
+const hasG=!!(window.gsap&&window.ScrollTrigger);
+if(!hasG){$('#loader').remove();document.body.classList.add('entered');bindCase(null);return;}
+gsap.registerPlugin(ScrollTrigger);
+
+/* ─── Lenis (scroll fluide) ─── */
+if(window.Lenis&&!reduce){
+  lenis=new Lenis({duration:1.15,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),smoothWheel:true});
+  lenis.on('scroll',ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+  lenis.stop();
+}
+const goTo=h=>{const el=$(h);if(!el)return;lenis?lenis.scrollTo(el,{offset:0,duration:1.4}):el.scrollIntoView({behavior:reduce?'auto':'smooth'});};
+$$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const h=a.getAttribute('href');if(h.length<2)return;e.preventDefault();closeMenu();goTo(h);}));
+
+/* ─── Curseur ─── */
+if(fine){
+  document.body.classList.add('has-cursor');
+  const lab=$('#cur-label');
+  const xc=gsap.quickTo(cur,'x',{duration:.15,ease:'power3'}),yc=gsap.quickTo(cur,'y',{duration:.15,ease:'power3'});
+  const xl=gsap.quickTo(lab,'x',{duration:.45,ease:'power3'}),yl=gsap.quickTo(lab,'y',{duration:.45,ease:'power3'});
+  addEventListener('pointermove',e=>{xc(e.clientX);yc(e.clientY);xl(e.clientX);yl(e.clientY);});
+  document.addEventListener('pointerover',e=>{const t=e.target.closest('[data-cursor]');
+    if(t&&t.dataset.cursor){lab.textContent=t.dataset.cursor;gsap.to(lab,{scale:1,duration:.4,ease:'expo.out'});gsap.to(cur,{scale:0,duration:.2});}
+    else if(t){gsap.to(cur,{scale:2.2,duration:.3});}
+    else if(e.target.closest('a,button')){gsap.to(cur,{scale:1.6,duration:.3});gsap.to(lab,{scale:0,duration:.25});}
+    else{gsap.to(lab,{scale:0,duration:.25});gsap.to(cur,{scale:1,duration:.3});}
+  });
+}
+
+/* ─── Transition pixels ─── */
+const px=$('#px');let cells=[];
+function buildPx(){const cols=innerWidth<700?8:16,rows=Math.ceil(innerHeight/(innerWidth/cols));px.style.gridTemplateColumns=`repeat(${cols},1fr)`;px.style.gridTemplateRows=`repeat(${rows},1fr)`;px.innerHTML='';cells=[];for(let i=0;i<cols*rows;i++){const c=document.createElement('i');px.appendChild(c);cells.push(c);}}
+buildPx();addEventListener('resize',()=>{clearTimeout(buildPx.t);buildPx.t=setTimeout(buildPx,200);});
+function pixelWipe(mid,palette){
+  return new Promise(res=>{
+    cells.forEach(c=>c.style.background=palette?palette[(Math.random()*palette.length)|0]:'#09090a');
+    gsap.timeline({onComplete:res})
+     .to(cells,{scale:1.02,duration:.28,ease:'power2.in',stagger:{each:.004,from:'random'}})
+     .add(()=>mid&&mid())
+     .to(cells,{scale:0,duration:.34,ease:'power2.out',stagger:{each:.004,from:'random'}},'+=.08');
+  });
+}
+
+/* ─── Découpage texte ─── */
+function splitWords(root){
+  const walk=n=>{[...n.childNodes].forEach(ch=>{
+    if(ch.nodeType===3){const parts=ch.textContent.split(/(\s+)/);const f=document.createDocumentFragment();
+      parts.forEach(p=>{if(!p)return;if(/^\s+$/.test(p)){f.appendChild(document.createTextNode(' '));return;}const w=document.createElement('span');w.className='w';w.innerHTML='<span class="wi"></span>';w.firstChild.textContent=p;f.appendChild(w);});
+      ch.replaceWith(f);}
+    else if(ch.nodeType===1&&ch.tagName!=='BR')walk(ch);});};
+  walk(root);return $$('.wi',root);
+}
+$$('[data-chars]').forEach(el=>{const t=el.textContent;el.textContent='';[...t].forEach(c=>{const s=document.createElement('span');s.className='ch';s.textContent=c;el.appendChild(s);});el.setAttribute('aria-hidden','true');});
+
+/* ─── Intro héros ─── */
+const chars=$$('#hero-h1 .ch');
+gsap.set(chars,{yPercent:110});
+gsap.set(['.hero-kick','.hero-foot'],{autoAlpha:0,y:20});gsap.set('.nav',{autoAlpha:0});
+function intro(){
+  const tl=gsap.timeline();
+  tl.fromTo('#hero-media',{scale:1.25},{scale:1,duration:2.2,ease:'expo.out'},0)
+    .to(chars,{yPercent:0,duration:1.2,ease:'expo.out',stagger:.035},.15)
+    .to(['.hero-kick','.hero-foot'],{autoAlpha:1,y:0,duration:1,ease:'expo.out',stagger:.1},.7)
+    .to('.nav',{autoAlpha:1,duration:1},.7);
+}
+
+/* ─── Préchargeur ─── */
+const loader=$('#loader'),hold=$('#ld-hold'),bar=$('#ld-bar'),pct=$('#ld-pct'),log=$('#ld-log');
+const lines=['Chargement des batailles gagnées','Affûtage des idées','Repassage du kilt','Calibrage du beau et de l\'efficace'];
+let li=0;(function nextLine(){if(li>=lines.length||!loader.isConnected)return;const d=document.createElement('div');d.innerHTML='&gt; '+lines[li]+'… <b>OK</b>';log.appendChild(d);li++;setTimeout(nextLine,420);})();
+lockScroll(true);
+let prog=0,holding=false,entered=false,last=performance.now();
+function loop(now){
+  if(entered)return;
+  const dt=Math.min(.05,(now-last)/1000);last=now;
+  prog+=holding?dt/1.1:-dt/.6;prog=Math.max(0,Math.min(1,prog));
+  bar.style.strokeDashoffset=402*(1-prog);
+  pct.textContent=String(Math.round(prog*100)).padStart(3,'0');
+  hold.style.transform=`scale(${1+prog*.12})`;
+  if(prog>=1){enter();return;}
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+const on=e=>{e.preventDefault();holding=true;},off=()=>{holding=false;};
+hold.addEventListener('pointerdown',on);addEventListener('pointerup',off);addEventListener('pointercancel',off);hold.addEventListener('pointerleave',off);
+hold.addEventListener('contextmenu',e=>e.preventDefault());
+addEventListener('keydown',e=>{if(!entered&&(e.code==='Space'||e.code==='Enter')){e.preventDefault();holding=true;}});
+addEventListener('keyup',e=>{if(e.code==='Space'||e.code==='Enter')holding=false;});
+$('#ld-skip').addEventListener('click',()=>enter());
+function enter(){
+  if(entered)return;entered=true;
+  const v=$('#hero-video');if(v){v.play&&v.play().catch(()=>{});}
+  const done=()=>{loader.remove();document.body.classList.add('entered');lockScroll(false);ScrollTrigger.refresh();};
+  if(reduce){done();gsap.set(chars,{yPercent:0});gsap.set(['.hero-kick','.hero-foot','.nav'],{autoAlpha:1,y:0});return;}
+  pixelWipe(done,COLS);
+  setTimeout(intro,380);
+}
+if(reduce){enter();}
+
+/* ─── Barre de progression + nav auto-masquée ─── */
+gsap.to('#prog',{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:.3}});
+let lastY=0;const nav=$('#nav');
+ScrollTrigger.create({start:0,end:'max',onUpdate:s=>{const y=s.scroll();if(!document.body.classList.contains('is-locked'))nav.classList.toggle('is-hidden',y>lastY&&y>200);lastY=y;}});
+
+/* ─── Héros au scroll : la vidéo se rétracte en cadre ─── */
+if(!reduce){
+  gsap.timeline({scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}})
+   .fromTo('#hero-media',{clipPath:'inset(0% 0% 0% 0% round 0px)'},{clipPath:'inset(10% 5% 14% 5% round 18px)',ease:'none'},0)
+   .to('#hero-h1',{yPercent:-40,ease:'none'},0)
+   .fromTo('.hf-wrap',{opacity:1},{opacity:0,ease:'none'},0);
+  if(fine){const hx=gsap.quickTo('#hero-h1','x',{duration:1,ease:'power3'});$('#hero').addEventListener('pointermove',e=>hx((e.clientX/innerWidth-.5)*-30));}
+}
+
+/* ─── Manifeste mot à mot ─── */
+const mw=[];(function(){const el=$('#mani');const walk=n=>[...n.childNodes].forEach(ch=>{if(ch.nodeType===3){const f=document.createDocumentFragment();ch.textContent.split(/(\s+)/).forEach(p=>{if(!p)return;if(/^\s+$/.test(p)){f.appendChild(document.createTextNode(' '));return;}const s=document.createElement('span');s.className='w';s.textContent=p;mw.push(s);f.appendChild(s);});ch.replaceWith(f);}else if(ch.nodeType===1)walk(ch);});walk(el);})();
+if(reduce)gsap.set(mw,{opacity:1});
+else gsap.to(mw,{opacity:1,ease:'none',stagger:.1,scrollTrigger:{trigger:'#mani',start:'top 80%',end:'bottom 45%',scrub:true}});
+
+/* ─── Titres ─── */
+$$('[data-split]').forEach(el=>{const ws=splitWords(el);if(reduce)return;gsap.from(ws,{yPercent:110,duration:1.1,ease:'expo.out',stagger:.06,scrollTrigger:{trigger:el,start:'top 85%'}});});
+
+/* ─── Chiffres ─── */
+ScrollTrigger.create({trigger:'#stats',start:'top 80%',once:true,onEnter:()=>{
+  $$('#stats .st').forEach((st,i)=>{const n=$('.st-n',st),t=+n.dataset.t,s=n.dataset.s,o={v:0};
+    gsap.to(o,{v:t,duration:reduce?0:1.8,delay:i*.12,ease:'power3.out',onUpdate:()=>n.textContent=Math.round(o.v)+s});
+    gsap.to(st,{'--p':1,duration:reduce?0:1.4,delay:i*.12+.2,ease:'expo.inOut'});});}});
+
+/* ─── Galerie horizontale ─── */
+const hc=$('#hc-i'),hbar=$('#hbar'),cards=$$('.pc',track),work=$('#work');
+const mm=gsap.matchMedia();
+mm.add('(min-width: 901px)',()=>{
+  const dist=()=>track.scrollWidth-innerWidth;
+  const tw=gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'#hwrap',start:'top top',end:()=>'+='+dist(),pin:true,scrub:1,invalidateOnRefresh:true,
+    onUpdate:s=>{hbar.style.transform=`scaleX(${s.progress})`;const idx=Math.min(P.length-1,Math.floor(s.progress*(P.length+.6)));hc.textContent=pad(idx+1);work.style.setProperty('--ac',P[idx].ac);}}});
+  cards.forEach(c=>{const im=$('img',c);gsap.fromTo(im,{xPercent:-7},{xPercent:7,ease:'none',scrollTrigger:{trigger:c,containerAnimation:tw,start:'left right',end:'right left',scrub:true}});});
+  gsap.from(cards.slice(0,3),{y:80,autoAlpha:0,duration:1.2,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'#hwrap',start:'top 85%'}});
+});
+mm.add('(max-width: 900px)',()=>{
+  if(reduce)return;
+  cards.forEach(c=>{gsap.from($('.pc-media',c),{clipPath:'inset(18% 0% 18% 0%)',duration:1.2,ease:'expo.out',scrollTrigger:{trigger:c,start:'top 88%'}});gsap.fromTo($('img',c),{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:c,start:'top bottom',end:'bottom top',scrub:true}});});
+});
+
+/* ─── Marquee réactif à la vitesse ─── */
+(function(){
+  const rows=[[$('#mq1'),1],[$('#mq2'),-1]];let x=[0,0],skew=0;const sk=gsap.quickSetter('.mq-row','skewX','deg');const sx=rows.map(r=>gsap.quickSetter(r[0],'x','px'));
+  gsap.ticker.add(()=>{
+    const v=lenis?lenis.velocity:0;const dir=v<0?-1:1;
+    rows.forEach(([el,d],i)=>{const w=el.scrollWidth/2;x[i]-=(reduce?0:(1.1+Math.abs(v)*.5))*d*dir;if(x[i]<=-w)x[i]+=w;if(x[i]>0)x[i]-=w;sx[i](x[i]);});
+    skew+=((Math.max(-12,Math.min(12,v*.6)))-skew)*.1;if(!reduce)sk(skew);
+  });
+})();
+
+/* ─── Arsenal ─── */
+if(!reduce)gsap.from('.ar',{x:-40,autoAlpha:0,duration:1,ease:'expo.out',stagger:.08,scrollTrigger:{trigger:'.ars-list',start:'top 85%'}});
+
+/* ─── Clients ─── */
+if(!reduce)$$('.cli-g').forEach((g,i)=>gsap.from($$('li',g),{y:30,autoAlpha:0,duration:.8,ease:'expo.out',stagger:.03,delay:i*.08,scrollTrigger:{trigger:'.cli-wall',start:'top 85%'}}));
+
+/* ─── Bouton magnétique ─── */
+const mag=$('#mag');
+if(fine&&!reduce){const mx=gsap.quickTo(mag,'x',{duration:.6,ease:'power3'}),my=gsap.quickTo(mag,'y',{duration:.6,ease:'power3'});
+  $('.cta-side').addEventListener('pointermove',e=>{const r=mag.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);if(Math.hypot(dx,dy)<r.width*1.1){mx(dx*.4);my(dy*.4);}else{mx(0);my(0);}});
+  $('.cta-side').addEventListener('pointerleave',()=>{mx(0);my(0);});
+  gsap.to(mag,{rotate:360,duration:20,repeat:-1,ease:'none'});gsap.to('#mag span',{rotate:-360,duration:20,repeat:-1,ease:'none'});}
+
+/* ─── Pied : le logo se « signe » au scroll ─── */
+if(!reduce)gsap.fromTo('#ft-big img',{clipPath:'inset(0% 100% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',ease:'none',scrollTrigger:{trigger:'#ft-big',start:'top 95%',end:'bottom bottom',scrub:.6}});
+
+
+bindCase(pixelWipe);
+
+/* ─── Fiche projet ─── */
+function bindCase(wipe){
+  const cs=$('#case');let cur=-1,lastFocus=null;
+  function fill(i){
+    const p=P[i],n=P[(i+1)%P.length];cur=i;
+    cs.style.setProperty('--cac',p.ac);cs.style.setProperty('--nac',n.ac);
+    $('#cs-crumb').textContent=pad(i+1)+' / '+pad(P.length)+' — '+p.name;
+    $('#cs-kick').textContent=pad(i+1)+' — '+p.year;
+    $('#cs-title').textContent=p.title;
+    $('#cs-sub').textContent=p.tag+' · '+p.cat;
+    const lv=$('#cs-live');if(p.url){lv.href=p.url;lv.hidden=false;}else lv.hidden=true;
+    $('#cs-del').innerHTML=p.del.map(d=>`<li>${d}</li>`).join('');
+    $('#cs-gal').innerHTML=p.gal.map(([k,cap])=>`<figure class="cs-fig">${Array.isArray(k)?`<div class="pair">${k.map(x=>`<div class="im"><img src="${img(x)}" alt="${cap}" loading="lazy"></div>`).join('')}</div>`:`<div class="im"><img src="${img(k)}" alt="${cap}" loading="lazy"></div>`}<figcaption>${cap}</figcaption></figure>`).join('')+(p.note?`<p class="cs-note">${p.note}</p>`:'');
+    $('#cs-next-name').textContent=n.name;
+    cs.scrollTop=0;
+    if(window.ScrollTrigger)ScrollTrigger.getAll().forEach(t=>t.vars.scroller===cs&&t.kill());
+  }
+  function animIn(){
+    if(!window.gsap||reduce)return;
+    gsap.from(['#cs-kick','#cs-title','#cs-sub'],{y:50,autoAlpha:0,duration:1,ease:'expo.out',stagger:.07});
+    gsap.from('#cs-del li',{x:30,autoAlpha:0,duration:.8,ease:'expo.out',stagger:.05,delay:.2});
+    $$('#cs-gal .im').forEach(im=>{gsap.from(im,{clipPath:'inset(0 0 100% 0)',duration:1.2,ease:'expo.inOut',scrollTrigger:{trigger:im,scroller:cs,start:'top 92%'}});});
+  }
+  function open(i){
+    lastFocus=document.activeElement;
+    const go=()=>{fill(i);cs.classList.add('is-open');lockScroll(true);$('#cs-close').focus({preventScroll:true});animIn();};
+    if(wipe&&!reduce)wipe(go,[P[i].ac,'#09090a','#efeae0']);else go();
+  }
+  function close(){
+    if(!cs.classList.contains('is-open'))return;
+    const go=()=>{cs.classList.remove('is-open');lockScroll(false);if(window.ScrollTrigger)ScrollTrigger.getAll().forEach(t=>t.vars.scroller===cs&&t.kill());lastFocus&&lastFocus.focus&&lastFocus.focus({preventScroll:true});};
+    if(wipe&&!reduce)wipe(go,['#09090a',P[cur].ac]);else go();
+  }
+  $$('.pc').forEach(c=>c.addEventListener('click',()=>open(+c.dataset.i)));
+  $('#cs-close').addEventListener('click',close);
+  $('#cs-next').addEventListener('click',()=>{const n=(cur+1)%P.length;const go=()=>{fill(n);$('#cs-close').focus({preventScroll:true});animIn();};if(wipe&&!reduce)wipe(go,[P[n].ac,'#09090a']);else go();});
+  addEventListener('keydown',e=>{if(e.key==='Escape'){close();closeMenu();}});
+  if(location.hash){const k=location.hash.slice(1),i=P.findIndex(p=>p.id===k);if(i>-1)setTimeout(()=>open(i),50);}
+}
+})();
+</script>
+
+</body>
+</html>
