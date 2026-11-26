@@ -501,7 +501,7 @@ footer{padding:clamp(40px,6vh,64px) var(--gut) calc(env(safe-area-inset-bottom,0
     <div class="sh">
       <h2 data-split>Le beau au service de <em class="outline">l'efficace</em></h2>
       <div>
-        <span class="mono">(15 réalisations)</span>
+        <span class="mono">(17 réalisations)</span>
         <p>Chaque réalisation est une opération de terrain : promoteurs, clubs, industriels, startups, et maintenant des sites web. Cliquez sur un projet pour ouvrir la fiche complète.</p>
       </div>
     </div>
@@ -526,7 +526,7 @@ footer{padding:clamp(40px,6vh,64px) var(--gut) calc(env(safe-area-inset-bottom,0
     <ul class="ars-list">
       <li class="ar"><span class="ar-ico" aria-hidden="true">⚔</span><span class="ar-name">Naming & rédaction</span><p class="ar-desc">Trouver le nom qui reste. Écrire les mots qui convainquent. Le langage est la première arme d'une marque.</p></li>
       <li class="ar"><span class="ar-ico" aria-hidden="true">◈</span><span class="ar-name">Identité de marque</span><p class="ar-desc">Logo, charte, univers graphique. Une cohérence visuelle qui distingue, inspire confiance et fait vendre.</p></li>
-      <li class="ar"><span class="ar-ico" aria-hidden="true">▭</span><span class="ar-name">Sites web</span><p class="ar-desc">Sites vitrines et plateformes sur mesure : design, développement, mise en ligne. Rapides, animés, pensés mobile d'abord, et simples à faire vivre. Derniers en date : domatronic.com, mona-nova.com et mhc44.com.</p></li>
+      <li class="ar"><span class="ar-ico" aria-hidden="true">▭</span><span class="ar-name">Sites web</span><p class="ar-desc">Sites vitrines et plateformes sur mesure : design, développement, mise en ligne. Rapides, animés, pensés mobile d'abord, et simples à faire vivre. Derniers en date : audacieuse-opus.com, jlnmaconnerie.fr, domatronic.com, mona-nova.com et mhc44.com.</p></li>
       <li class="ar"><span class="ar-ico" aria-hidden="true">◎</span><span class="ar-name">Stratégie marketing</span><p class="ar-desc">Diagnostiquer le terrain, cibler, concevoir les campagnes qui font mouche. Pas de blabla, des résultats.</p></li>
       <li class="ar"><span class="ar-ico" aria-hidden="true">▣</span><span class="ar-name">Studio & impression</span><p class="ar-desc">Du fichier au support fini : plaquettes, affiches, signalétique. Ce que Wallace crée, Wallace le tient jusqu'au bout.</p></li>
       <li class="ar"><span class="ar-ico" aria-hidden="true">◇</span><span class="ar-name">Plan média & conseil</span><p class="ar-desc">Quels canaux, quels messages, quel timing. La communication efficace est d'abord une question de précision.</p></li>
@@ -546,7 +546,7 @@ footer{padding:clamp(40px,6vh,64px) var(--gut) calc(env(safe-area-inset-bottom,0
         <div class="cli-g"><h3><span>Industrie & santé</span><span>04</span></h3><ul><li>Philips</li><li>Neoflo</li><li>Thalasso Rivage</li><li>Amsterdam Air</li></ul>
           <h3 style="margin-top:36px"><span>Tourisme & territoire</span><span>03</span></h3><ul><li>Le Mont Saint-Michel</li><li>D-Day Normandie</li><li>Ville de Clisson</li></ul></div>
         <div class="cli-g"><h3><span>Sport & clubs</span><span>05</span></h3><ul><li>SNVBA — Volley pro</li><li>Legé HBC — Handball</li><li>Citadelle MMA</li><li>MHC</li><li>Roller Carquefou</li></ul></div>
-        <div class="cli-g"><h3><span>Tech & services</span><span>04</span></h3><ul><li>MRIT</li><li>Nootrolab</li><li>Dexxter</li><li>SoonGo</li></ul></div>
+        <div class="cli-g"><h3><span>Tech, services & artisans</span><span>06</span></h3><ul><li>MRIT</li><li>Nootrolab</li><li>Dexxter</li><li>SoonGo</li><li>Domatronic</li><li>JLN Maçonnerie</li></ul></div>
       </div>
     </div>
   </section>
@@ -572,7 +572,7 @@ footer{padding:clamp(40px,6vh,64px) var(--gut) calc(env(safe-area-inset-bottom,0
 <div id="case" role="dialog" aria-modal="true" aria-labelledby="cs-title" data-lenis-prevent>
   <div class="cs-bar"><span class="mono" id="cs-crumb"></span><button class="cs-close" id="cs-close" type="button">Fermer <i aria-hidden="true">×</i></button></div>
   <div class="cs-head">
-    <div><span class="cs-kick mono" id="cs-kick"></span><h2 class="cs-title" id="cs-title"></h2><p class="cs-sub" id="cs-sub"></p><a class="cs-live mono" id="cs-live" href="#" target="_blank" rel="noopener" hidden>Voir le site en ligne ↗</a></div>
+    <div><span class="cs-kick mono" id="cs-kick"></span><h2 class="cs-title" id="cs-title"></h2><p class="cs-sub" id="cs-sub"></p><a class="cs-live mono" id="cs-live" target="_blank" rel="noopener" hidden>Voir le site en ligne ↗</a></div>
     <div class="cs-del"><h3>Ce que Wallace a livré</h3><ul id="cs-del"></ul></div>
   </div>
   <div class="cs-gal" id="cs-gal"></div>
@@ -595,6 +595,12 @@ const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelect
 
 /* ─── Données projets ─── */
 const P=[
+ {id:'audacieuse',name:'L\'Audacieuse',title:'L\'Audacieuse',sub:'Résidence neuve · Site web',tag:'Site web · Design · Développement',cat:'Immobilier · Opus Groupe · Les Sables-d\'Olonne',ac:'#2d5a4e',ar:'16/9',year:'2026 · Site web livré',cover:'aud-cover',url:'https://audacieuse-opus.com/',
+  gal:[['aud-web-intro','Écran d\'entrée — Une carte ancienne des Sables, un trait de vol, « un nouvel horizon »'],['aud-web-hero','Accueil — La résidence au coucher du soleil, 12 lots en accès libre'],['aud-web-offre','Offre de lancement — Frais de notaire offerts aux plus rapides'],['aud-web-profils','Trois profils — Pied-à-terre, famille ou investisseur : le site s\'adapte'],['aud-web-lots','Les lots — Survoler la résidence étage par étage, ouvrir la fiche de chaque appartement'],['aud-web-residence','La résidence — Architecture, prestations et perspectives'],['aud-web-sables','Les Sables-d\'Olonne — Un art de vivre entre océan, lumière et nature']],
+  del:['Conception & design du site de commercialisation','Développement sur mesure, responsive mobile','Écran d\'entrée animé','Sélecteur de lots interactif par étage & fiches lots','Parcours par profil d\'acquéreur','Offre de lancement, prise de rendez-vous & rappel sous 24 h']},
+ {id:'jln',name:'JLN Maçonnerie',title:'JLN Maçonnerie',sub:'Maçon & couvreur · Site web',tag:'Site web · Design · Développement',cat:'Artisan · Legé (44)',ac:'#1e88d9',ar:'16/9',year:'2026 · Site web livré',cover:'jln-cover',url:'https://www.jlnmaconnerie.fr/',
+  gal:[['jln-web-intro','Écran d\'entrée — La maison se construit, des fondations à la toiture'],['jln-web-hero','Accueil — « On sait bâtir, restaurer, couvrir votre maison »'],['jln-web-metiers','Trois métiers, une équipe — Construction, rénovation & patrimoine, couverture'],['jln-web-methode','Méthode — Un chantier préparé avant d\'être lancé'],['jln-web-real','Réalisations — Le travail parle pour eux, 90 photos de chantiers'],['jln-web-zone','Zone d\'intervention — Legé et 25 km autour']],
+  del:['Conception & design du site','Développement sur mesure, responsive mobile','Écran d\'entrée animé : la maison qui se construit','Pages métiers & galerie de 90 réalisations','Avis Google & zone d\'intervention','Appel et demande de devis en un clic']},
  {id:'domatronic',name:'Domatronic',title:'Domatronic',sub:'Électricien · Site web',tag:'Site web · Design · Développement',cat:'Artisan · Legé (44)',ac:'#f0502d',ar:'16/9',year:'2026 · Site web livré',cover:'dom-cover',url:'https://domatronic.com/',
   gal:[['dom-web-intro','Écran d\'entrée — Le plan de la maison s\'allume : « Maintenir pour allumer »'],['dom-web-hero','Accueil — « Ma maison motorisée en un clic »'],['dom-web-services','Services — Du tableau au bouton, dix métiers détaillés'],['dom-web-avap','Avant / après — Trois chantiers réels à comparer au curseur'],['dom-web-methode','Méthode — Du coup de fil à la mise sous tension'],['dom-web-zone','Zone d\'intervention — 50 km autour de Legé']],
   del:['Conception & design du site','Développement sur mesure, responsive mobile','Écran d\'entrée animé : la maison qui s\'allume','Comparateur avant / après de chantiers','Galerie de réalisations & zone d\'intervention','Appel et formulaire de contact en un clic']},
@@ -690,7 +696,7 @@ if(window.Lenis&&!reduce){
   lenis.stop();
 }
 const goTo=h=>{const el=$(h);if(!el)return;lenis?lenis.scrollTo(el,{offset:0,duration:1.4}):el.scrollIntoView({behavior:reduce?'auto':'smooth'});};
-$$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const h=a.getAttribute('href');if(h.length<2)return;e.preventDefault();closeMenu();goTo(h);}));
+$$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const h=a.getAttribute('href');if(!h||h.charAt(0)!=='#'||h.length<2)return;e.preventDefault();closeMenu();goTo(h);}));
 
 /* ─── Curseur ─── */
 if(fine){
